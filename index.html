@@ -244,6 +244,12 @@
       evt.currentTarget.className += " w3-black";
     }
 
+    function highlightHow() {
+      fhe = document.getElementById("footerhow")
+      fhe.style.borderLeft = "6px solid chartreuse";
+      fhe.style.paddingLeft = "4px";
+    }
+
   </script>
 </head>
 
@@ -257,12 +263,12 @@
         height="22"></a>
     <a href="https://github.com/whoadvertiseson/whofundstheright" class="w3-bar-item w3-button"><img
         src="images/github_icon.png" height="22"></a>
-    <a href="#usethisdata" class="w3-bar-item w3-button w3-right">Use this data</a>
+    <a href="#usethisdata" class="w3-bar-item w3-button w3-right" onclick="highlightHow()">Use this data</a>
   </div>
 
   <div class="w3-sidebar w3-bar-block w3-collapse" style="width:18%;right:0;padding-top:45px; background-color: #FFF;">
     <h4 class="w3-bar-item">Suggested companies to avoid if you opppose Trumpism</h4>
-    <div class="w3-bar-item w3-button" style="margin-top:2px; margin-bottom:8px" onclick="refeshRandomFill()"><i
+    <div class="w3-bar-item w3-button" style="margin-top:2px; margin-bottom:12px" onclick="refeshRandomFill()"><i
         class="fa fa-refresh"></i></div>
     <div id="randomfill"></div>
     <script type="application/javascript">
@@ -370,7 +376,7 @@
       <i>Disclaimer: Summaries, rankings, analyses, and selections are
         author ideas and opinions protected under the U.S. Constitutional right to free speech</i>
     </div>
-    <div class="w3-footer">
+    <div id="footerhow" class="w3-footer">
       <p>
         <a name="usethisdata"></a>
       <h5>How to use this data</h5>
