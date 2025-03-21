@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Who Funds the Right</title>
+  <meta charset="UTF-8">
+  <meta property="og:title" content="Who Funds the Right" />
+  <meta property="og:description"
+    content="Your data source for recommendations which American companies donated to the right, sponsor right wing news, rolled back diversity, and have right wing ownership." />
+  <meta property="og:image" content="https://whofundstheright.org/images/ogimage.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/oswald.css">
+  <link rel="stylesheet" href="css/opensans.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="shortcut icon" href="images/favicon.png">
+  <style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Oswald"
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 4px 0;
+      letter-spacing: -1px;
+      padding-bottom: 4px;
+      color: #111 !important;
+    }
+
+    h2 {
+      font-size: 30px;
+      padding-bottom: 1px;
+      margin-bottom: 1px;
+      color: #333;
+    }
+
+    h3 {
+      font-size: 25px;
+      margin: 8px 0 !important;
+    }
+
+    h4 {
+      margin: 2px 0;
+      font-size: 16px !important;
+    }
+
+    h5 {
+      margin: 2px 0 0 0;
+      padding: 0;
+      text-decoration: underline;
+    }
+
+    ul {
+      margin-top: 1px;
+      padding-top: 1px
+    }
+
+    .source {
+      font-size: 14px;
+      padding-bottom: 2px;
+      font-style: italic;
+    }
+
+    body {
+      font-family: "Open Sans"
+    }
+
+    .bignav {
+      font-size: 17px;
+    }
+
+    .w3-padding-4 {
+      padding-top: 4px !important;
+      padding-bottom: 4px !important
+    }
+
+    .w3-padding-8 {
+      padding-top: 8px !important;
+      padding-bottom: 8px !important
+    }
+
+    .fa-ellipsis-h {
+      margin-top: 9px;
+    }
+
+    .fa-refresh {
+      margin-left: 43%;
+      font-size: 25px
+    }
+
+    .w3-margin-right {
+      margin-right: 3px !important
+    }
+
+    .w3-bottombar {
+      border-bottom: 6px solid #000 !important;
+    }
+
+    .w3-content {
+      margin-right: 18%
+    }
+
+    .w3-container-data {
+      padding-left: 25px;
+      padding-right: 25px !important;
+    }
+
+    .w3-bar-subitem {
+      margin-top: 8px !important;
+      font-weight: bold;
+      font-size: 17px;
+      text-align: center !important;
+      border-top: 1px dashed #333 !important;
+      padding: 6px 4px 4px 4px !important;
+    }
+
+    .w3-bar-label {
+      width: 62%;
+      display: block;
+      text-align: center;
+      background-color: #eee;
+      padding: 2px 2px;
+      margin-left: 18%;
+      margin-right: 18%;
+      margin-top: 2px;
+      margin-bottom: 4px;
+      border: none;
+      white-space: normal;
+      float: none;
+      outline: 0;
+      font-size: 11px;
+    }
+
+    .hidden {
+      display: none
+    }
+
+    .w3-footer {
+      width: 68%;
+      margin-left: 10%;
+      margin-right: 30%;
+    }
+
+    .tabbut {
+      width: 224px;
+      margin-bottom: 0;
+      border-radius: 8px 8px 0 0;
+    }
+
+    @media (max-width:600px) {
+      h1 {
+        font-size: 33px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      h3 {
+        font-size: 17px;
+      }
+
+      .source {
+        font-size: 13px;
+      }
+    }
+
+    .w3-bar-item {
+      padding: 4px 8px !important;
+      font-size: 14px;
+    }
+
+    @media (max-width:992px) {
+      .w3-content {
+        margin-right: 0
+      }
+
+      .w3-footer {
+        margin-right: 12%;
+      }
+    }
+
+    @media (max-width:1150px) {
+      .tabbut {
+        margin-bottom: 3px;
+        font-size: 15px;
+        width: 204px;
+        border-radius: 0;
+      }
+
+      .w3-section {
+        margin-top: 2px !important;
+      }
+    }
+  </style>
+  <script type="application/javascript">
+
+    function loadWhich() {
+      queryString = window.location.search;
+      urlParams = new URLSearchParams(queryString);
+      tab = urlParams.get('tab')
+      if (tab) {
+        obj = document.getElementById(tab + 'but')
+        obj.click();
+      }
+    }
+
+    tabSubLabels = ['Corporate PACs Ranked by Right-Biased Giving',
+      'Fox News Channel Sponsors Ranked by Ad Frequency',
+      'Companies with Prominent Right Leaning Ownership',
+      'Companies that Rolled Back Diversity Programs']
+    tabSubSources = ['Source: Calculated from <a href="https://www.opensecrets.org/"">OpenSecrets</a> 2024 cycle PAC data',
+      'Source: <a href="http://whoadvertiseson.org/"">WhoAdvertisesOn</a> project ',
+      'Sources: Various cited news articles ',
+      'Sources: Various cited news articles']
+
+
+    function openTab(evt, tabName, subIndex) {
+      // Declare all variables
+      var i, tabcontent, tablinks;
+
+      document.getElementById('subsection_title').innerHTML = "<h2>" + tabSubLabels[subIndex] + "</h2>" + "<span class='source'>" + tabSubSources[subIndex] + "</span>"
+
+      // Get all iframes and hide them
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+
+      // Get all elements with class="tablinks" and remove the class "active"
+      tablinks = document.getElementsByClassName("tabbut");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3-black", "");
+      }
+
+      document.getElementById(tabName).style.display = "block";
+
+      evt.currentTarget.className += " w3-black";
+    }
+
+  </script>
+</head>
+
+<body class="w3-white onload=" loadWhich()">
+
+  <!-- Navigation bar with social media icons -->
+  <div class="w3-bar w3-black w3-hide-small">
+    <a href="https://bsky.app/profile/whofundstheright.bsky.social" class="w3-bar-item w3-button"><img
+        src="images/bsky-icon.png" height="22"></a>
+    <a href="https://www.threads.net/@whoadvertiseson" class="w3-bar-item w3-button"><img src="images/threads-icon.png"
+        height="22"></a>
+    <a href="https://github.com/whoadvertiseson/whofundstheright" class="w3-bar-item w3-button"><img
+        src="images/github_icon.png" height="22"></a>
+    <a href="#usethisdata" class="w3-bar-item w3-button w3-right">Use this data</a>
+  </div>
+
+  <div class="w3-sidebar w3-bar-block w3-collapse" style="width:18%;right:0;padding-top:45px; background-color: #FFF;">
+    <h4 class="w3-bar-item">Suggested companies to avoid if you opppose Trumpism</h4>
+    <div id="randomfill"></div>
+    <div class="w3-bar-item w3-button" style="margin-top:20px" onclick="refeshRandomFill()"><i
+        class="fa fa-refresh"></i></div>
+    <script type="application/javascript">
+      highlights = []
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_tesla.png" alt="Tesla" height="55"></div><div class="w3-bar-label">Right leaning ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_x.png" alt="X" height="35"></div><div class="w3-bar-label">Right leaning ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_valero.png" alt="Valero" height="45"></div><div class="w3-bar-label">Right-biased PAC </div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_hd.png" alt="Home Depot" height="45"></div><div class="w3-bar-label">Right-biased PAC </div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_walmart.png" alt="Walmart" height="40"></div><div class="w3-bar-label">Right-biased PAC </div><div class="w3-bar-label">Rolled back diversity</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_proctergamble.png" alt="Procter & Gamble" height="45"></div><div class="w3-bar-label">Right wing news sponsor</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_lm.png" alt="Liberty Mutual" height="30"></div><div class="w3-bar-label">Right wing news sponsor</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_az.png" alt="Amazon" height="35"></div><div class="w3-bar-label">Right leaning ownership</div><div class="w3-bar-label">Rolled back diversity</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_tsc.png" alt="Tractor Supply Co." height="35"></div><div class="w3-bar-label">Right-biased PAC </div><div class="w3-bar-label">Rolled back diversity</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_fox.png" alt="Fox Corp" height="30"></div><div class="w3-bar-label">Right leaning ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_uline.png" alt="Uline" height="30"></div><div class="w3-bar-label">Right leaning ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_meta.png" alt="Meta" height="40"></div><div class="w3-bar-label">Rolled back diversity</div><div class="w3-bar-label">Right leaning ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_bon.png" alt="Balance of Nature" height="20"></div><div class="w3-bar-label">Right wing news sponsor</div><div class="w3-bar-label">Right leaning ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_marathon.png" alt="Marathon" height="40"></div><div class="w3-bar-label">Right-biased PAC</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_ATT.png" alt="]" height="40"></div><div class="w3-bar-label">Right-biased PAC</div><div class="w3-bar-label">Right wing news sponsor</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_forcefactor.png" alt="Force Factor" height="35"></div><div class="w3-bar-label">Right wing news sponsor</div>')
+
+      function shuffle(array) {
+        let currentIndex = array.length;
+        while (currentIndex != 0) {
+          let randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+      }
+
+      function refeshRandomFill() {
+        shuffle(highlights)
+        filldiv = document.getElementById("randomfill")
+        filldiv.innerHTML = highlights[0] + highlights[1] + highlights[2] + highlights[3] + highlights[4]
+      }
+
+      refeshRandomFill()
+    </script>
+  </div>
+
+
+  <div class="w3-content" style="max-width:1600px; min-width:450px;">
+
+    <!-- Header -->
+    <header class=" w3-container w3-center w3-padding-8 w3-white">
+      <h1><img src="images/sheet.png" width="44" alt="Spreadsheet Icon"> WHO FUNDS THE RIGHT
+      </h1>
+    </header>
+
+    <!-- Header --> <!---#94a2af--->
+    <header id="topcategories">
+      <div class="w3-container w3-center" style="max-width:1600px; min-width:450px; background-color:#74b69d">
+        <h3>Your data source for recommendations on which American companies&hellip;</h3>
+        <div class="w3-section w3-bottombar w3-padding-4" style="padding:0px!important; margin-bottom:0px!important;">
+          <button id="PACbut" class="tabbut w3-button w3-white w3-black bignav" onclick="openTab(event, 'PAC',0)"><span
+              style="vertical-align: top">Donated to the right</span></button>
+          <button id="NEWSbut" class="tabbut w3-button w3-white bignav" onclick="openTab(event, 'NEWS',1)"><span
+              style="vertical-align: top">Sponsor right wing
+              news</span></button>
+          <button id="DEIbut" class="tabbut w3-button w3-white bignav" onclick="openTab(event, 'DEI',3)"><span
+              style="vertical-align: top">Rolled back
+              diversity</span></button>
+          <button id="OWNbut" class="tabbut w3-button w3-white bignav" onclick="openTab(event, 'OWN',2)"><span
+              style="vertical-align: top">Have right wing
+              owners</span></button>
+        </div>
+      </div>
+    </header>
+
+    <!-- PAC Content--->
+    <div class="w3-container w3-container-data" style="max-width:1600px; min-width:450px; background-color:#EEE">
+      <div id="subsection_title" style="text-align:center;">
+        <h2>Corporate PACs Ranked by GOP-Biased Giving</h2><span class="source">Source: Calculated from <a
+            href="https://www.opensecrets.org/">OpenSecrets</a> 2024 cycle PAC data</span>
+      </div>
+      <div class="w3-row-padding">
+        <div id="PAC" class="tabcontent"><iframe class="airtable-embed"
+            src="https://airtable.com/embed/appk5vYnSo2I0qfu0/shrhKauFkBh0UUfsi" frameborder="0" onmousewheel=""
+            width="100%" height="440" style="background: transparent; border: 0px solid #ccc;"></iframe>
+        </div>
+        <div id="NEWS" class="tabcontent hidden"><iframe class="airtable-embed"
+            src="https://airtable.com/embed/appE5LiJA7eTpyMxC/shrcvsWMkvJaiiTAy" frameborder="0" onmousewheel=""
+            width="100%" height="440" style="background: transparent; border: 0px solid #ccc;"></iframe>
+        </div>
+        <div id="DEI" class="tabcontent hidden"><iframe class="airtable-embed"
+            src="https://airtable.com/embed/app2FIwo8rAcFarf6/shro9s4LjT4XRrQBV" frameborder="0" onmousewheel=""
+            width="100%" height="440" style="background: transparent; border: 0px solid #ccc;"></iframe>
+        </div>
+        <div id="OWN" class="tabcontent hidden"><iframe class="airtable-embed"
+            src="https://airtable.com/embed/app2FIwo8rAcFarf6/shrgsnVolEs1m3aD4" frameborder="0" onmousewheel=""
+            width="100%" height="440" style="background: transparent; border: 0px solid #ccc;"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- END w3-content -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-dark-grey w3-padding-8" style="max-width:1600px; min-width:450px;">
+    <div class="disclaimer"
+      style="text-align:center; font-size:12px; margin-bottom:24px; margin-left:4%; margin-right:24%">
+      <i>Disclaimer: Summaries, rankings, analyses, and selections are
+        author ideas and opinions protected under the U.S. Constitutional right to free speech</i>
+    </div>
+    <div class="w3-footer">
+      <p>
+        <a name="usethisdata"></a>
+      <h5>How to use this data</h5>
+      <ul>
+        <li>Make a plan to economically resist that fits your life. Some things you can't avoid. Pick a few
+          you can.</li>
+        <li>Make your own social media campaigns on TikTok, Instagram, or elsewhere.</li>
+        <li>Journalists: use this (and us) as a resource.</li>
+        <li>Any questions, comments, or suggestions, please email <a href="mailto:whofundstheright@proton.me"
+            target="_blank">whofundstheright@proton.me</a>.</li>
+      </ul>
+      </p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
