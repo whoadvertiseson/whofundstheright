@@ -116,7 +116,6 @@
       font-weight: bold;
       font-size: 17px;
       text-align: center !important;
-      border-top: 1px dashed #333 !important;
       padding: 6px 4px 4px 4px !important;
     }
 
@@ -176,6 +175,63 @@
       font-size: 14px;
     }
 
+    #overlay {
+      position: fixed;
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: 40px 12px 40px 12px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 5;
+      cursor: pointer;
+    }
+
+    .w3-grid-container {
+      padding-left: 12%;
+      padding-right: 12%;
+      width: auto;
+      text-align: center;
+      display: block;
+    }
+
+    .w3-grid-item {
+      width: 180px;
+      height: 135px;
+      padding-top: 2px;
+      background-color: #FFF;
+      border: 2px solid #000;
+      display: block;
+      float: left;
+    }
+
+    .closex {
+      position: absolute;
+      color: white;
+      font-size: 30px;
+      top: 10px;
+      right: 50px;
+    }
+
+    .gridheader {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: left;
+      padding: 2px;
+      font-family: "Oswald";
+      margin-bottom: 3px;
+    }
+
+    .w3-dashline {
+      width: 100%;
+      height: 1px;
+      margin-top: 8px;
+      border-top: 1px dashed #333;
+    }
+
     @media (max-width:992px) {
       .w3-content {
         margin-right: 0
@@ -213,7 +269,7 @@
 
     tabSubLabels = ['Corporate PACs Ranked by Right-Biased Giving',
       'Fox News Channel Sponsors Ranked by Ad Frequency',
-      'Companies with Prominent Right Leaning Ownership',
+      'Companies with Prominent Right Biased Ownership',
       'Companies that Rolled Back Diversity Programs']
     tabSubSources = ['Source: Calculated from <a href="https://www.opensecrets.org/"">OpenSecrets</a> 2024 cycle PAC data',
       'Source: <a href="http://whoadvertiseson.org/"">WhoAdvertisesOn</a> project ',
@@ -255,6 +311,9 @@
 
 <body class="w3-white onload=" loadWhich()">
 
+
+  <div id="overlay" onclick="closeOverlayGrid()"></div>
+
   <!-- Navigation bar with social media icons -->
   <div class="w3-bar w3-black w3-hide-small">
     <a href="https://bsky.app/profile/whofundstheright.bsky.social" class="w3-bar-item w3-button"><img
@@ -271,26 +330,28 @@
     <div class="w3-bar-item w3-button" style="margin-top:2px; margin-bottom:12px" onclick="refeshRandomFill()"><i
         class="fa fa-refresh"></i></div>
     <div id="randomfill"></div>
+    <div class="w3-bar-item w3-button" style="margin-top:12px; margin-bottom:12px" onclick="openOverlayGrid()">See all
+      current suggestions >></div>
     <script type="application/javascript">
       highlights = []
-      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_tesla.png" alt="Tesla" height="55"></div><div class="w3-bar-label">Right leaning ownership</div>')
-      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_x.png" alt="X" height="35"></div><div class="w3-bar-label">Right leaning ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_tesla.png" alt="Tesla" height="55"></div><div class="w3-bar-label">Right-biased ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_x.png" alt="X" height="35"></div><div class="w3-bar-label">Right-biased ownership</div>')
       highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_valero.png" alt="Valero" height="45"></div><div class="w3-bar-label">Right-biased PAC </div>')
-      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_hd.png" alt="Home Depot" height="45"></div><div class="w3-bar-label">Right-biased PAC </div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_hd.png" alt="Home Depot" height="45"></div><div class="w3-bar-label">Right-biased PAC </div><div class="w3-bar-label">Rolled back diversity</div>')
       highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_walmart.png" alt="Walmart" height="40"></div><div class="w3-bar-label">Right-biased PAC </div><div class="w3-bar-label">Rolled back diversity</div>')
       highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_proctergamble.png" alt="Procter & Gamble" height="45"></div><div class="w3-bar-label">Right wing news sponsor</div>')
       highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_lm.png" alt="Liberty Mutual" height="30"></div><div class="w3-bar-label">Right wing news sponsor</div>')
-      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_az.png" alt="Amazon" height="35"></div><div class="w3-bar-label">Right leaning ownership</div><div class="w3-bar-label">Rolled back diversity</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_az.png" alt="Amazon" height="35"></div><div class="w3-bar-label">Right-biased ownership</div><div class="w3-bar-label">Rolled back diversity</div>')
       highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_tsc.png" alt="Tractor Supply Co." height="35"></div><div class="w3-bar-label">Right-biased PAC </div><div class="w3-bar-label">Rolled back diversity</div>')
-      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_fox.png" alt="Fox Corp" height="30"></div><div class="w3-bar-label">Right leaning ownership</div>')
-      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_uline.png" alt="Uline" height="30"></div><div class="w3-bar-label">Right leaning ownership</div>')
-      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_meta.png" alt="Meta" height="40"></div><div class="w3-bar-label">Rolled back diversity</div><div class="w3-bar-label">Right leaning ownership</div>')
-      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_bon.png" alt="Balance of Nature" height="20"></div><div class="w3-bar-label">Right wing news sponsor</div><div class="w3-bar-label">Right leaning ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_fox.png" alt="Fox Corp" height="30"></div><div class="w3-bar-label">Right-biased ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_uline.png" alt="Uline" height="30"></div><div class="w3-bar-label">Right-biased ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_meta.png" alt="Meta" height="40"></div><div class="w3-bar-label">Rolled back diversity</div><div class="w3-bar-label">Right-biased ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_bon.png" alt="Balance of Nature" height="20"></div><div class="w3-bar-label">Right wing news sponsor</div><div class="w3-bar-label">Right-biased ownership</div>')
       highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_marathon.png" alt="Marathon" height="40"></div><div class="w3-bar-label">Right-biased PAC</div>')
       highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_ATT.png" alt="AT&T" height="40"></div><div class="w3-bar-label">Right-biased PAC</div><div class="w3-bar-label">Right wing news sponsor</div>')
       highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_forcefactor.png" alt="Force Factor" height="35"></div><div class="w3-bar-label">Right wing news sponsor</div>')
       highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_ro.png" alt="Ro" height="45"></div><div class="w3-bar-label">Right wing news sponsor</div>')
-      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_tmobilestarlink.png" alt="T-Mobile + Starlink" height="20"></div><div class="w3-bar-label">Right leaning ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_tmobilestarlink.png" alt="T-Mobile + Starlink" height="18"></div><div class="w3-bar-label">Right-biased ownership</div>')
 
       function shuffle(array) {
         let currentIndex = array.length;
@@ -305,13 +366,34 @@
       function refeshRandomFill() {
         shuffle(highlights)
         filldiv = document.getElementById("randomfill")
-        filldiv.innerHTML = highlights[0] + highlights[1] + highlights[2] + highlights[3] + highlights[4]
+        dashline = '<div class="w3-dashline"></div>'
+        filldiv.innerHTML = dashline + highlights[0] + dashline + highlights[1] + dashline + highlights[2] + dashline + highlights[3] + dashline + highlights[4] + dashline
+      }
+
+      function openOverlayGrid() {
+        shuffle(highlights)
+        overlaydiv = document.getElementById("overlay")
+        tempih = '<div class="w3-grid-container"><div class="closex"><i class="fa fa-window-close"></i></div><div class="gridheader"><span style="background-color:#74b69d; padding: 4px;">Where to NOT spend your money if you opppose Trumpism. Our suggestions, updated March 2025.</span></div>'
+        let currentIndex = highlights.length;
+        while (currentIndex != 0) {
+          currentIndex--;
+          tempih += '<div class="w3-grid-item">'
+          tempih += highlights[currentIndex]
+          tempih += '</div>'
+        }
+        tempih += '</div">'
+        overlaydiv.innerHTML = tempih
+        overlaydiv.style.display = "block"
+      }
+
+      function closeOverlayGrid() {
+        overlaydiv = document.getElementById("overlay")
+        overlaydiv.style.display = "none"
       }
 
       refeshRandomFill()
     </script>
   </div>
-
 
   <div class="w3-content" style="max-width:1600px; min-width:450px;">
 
