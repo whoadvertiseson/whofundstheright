@@ -9,4 +9,4 @@ This repository contains three elements related to the Who Funds the Right proje
 * **Company Data**: While data for the project is primarily hosted in Airtable, a copy of all data will be maintained on GitHub.
 * **Python Scripts**: As more advanced features are developed, data processing Python scripts will also be included here.
 
-*Disclaimer: Summaries, rankings, analyses, and selections presented throughout this project are author ideas and opinions protected under the U.S. Constitutional right to free speech*
+*Notice: Summaries, rankings, analyses, and selections throughout the project represent author ideas and opinions and are protected under the right to free speech*
