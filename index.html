@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="css/opensans.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="shortcut icon" href="images/favicon.png">
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v22.0"></script>
   <style>
     h1,
     h2,
@@ -232,6 +235,11 @@
       border-top: 1px dashed #333;
     }
 
+    .fb-share-button {
+      float: right;
+      margin-right: 4px;
+    }
+
     @media (max-width:992px) {
       .w3-content {
         margin-right: 0
@@ -309,7 +317,7 @@
   </script>
 </head>
 
-<body class="w3-white onload=" loadWhich()">
+<body class="w3-white" onload="loadWhich()">
 
 
   <div id="overlay" onclick="closeOverlayGrid()"></div>
@@ -321,6 +329,9 @@
     <a href="https://www.threads.net/@whoadvertiseson" class="w3-bar-item w3-button"><img src="images/threads-icon.png"
         height="22"></a>
     <a href="#usethisdata" class="w3-bar-item w3-button w3-right" onclick="highlightHow()">Use this data</a>
+    <div class="fb-share-button" data-href="https://whofundstheright.org" data-layout="" data-size=""><a target="_blank"
+        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwhofundstheright.org%2F&amp;src=sdkpreparse"
+        class="fb-xfbml-parse-ignore">Share</a></div>
   </div>
 
   <div class="w3-sidebar w3-bar-block w3-collapse" style="width:18%;right:0;padding-top:45px; background-color: #FFF;">
