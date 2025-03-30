@@ -245,6 +245,15 @@
       padding-top: 3px;
     }
 
+    .disclaimer-overlay {
+      clear: both;
+      display: both;
+      color: #BBB;
+      width: 100%;
+      padding: 0 50px 0 0;
+      text-align: left;
+    }
+
     @media (max-width:992px) {
       .w3-content {
         margin-right: 0
@@ -395,6 +404,7 @@
           tempih += highlights[currentIndex]
           tempih += '</div>'
         }
+        tempih += '<div class="disclaimer-overlay">Suggestions are author opinions protected under the right to free speech. You are encouraged to do your own research and make use of the data and sources provided.</span>'
         tempih += '</div">'
         overlaydiv.innerHTML = tempih
         overlaydiv.style.display = "block"
@@ -469,9 +479,9 @@
   <!-- Footer -->
   <footer class="w3-container w3-dark-grey w3-padding-8" style="max-width:1600px; min-width:450px;">
     <div class="disclaimer"
-      style="text-align:center; font-size:12px; margin-bottom:24px; margin-left:4%; margin-right:24%; color:#ccc">
-      <i>Notice: Summaries, rankings, and selections represent
-        author ideas and opinions and are protected under the right to free speech</i>
+      style="text-align:left; font-size:12px; margin-bottom:24px; margin-left:4%; margin-right:24%; color:#ccc">
+      <i>Notice: Summaries, rankings, and suggestions are author opinions protected under the right to free speech. You
+        are encouraged to do your own research and make use of the data and sources provided.</i>
     </div>
     <div id="footerhow" class="w3-footer">
       <p>
