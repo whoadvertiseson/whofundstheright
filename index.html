@@ -252,6 +252,7 @@
       width: 100%;
       padding: 0 50px 0 0;
       text-align: left;
+      font-size: 12px;
     }
 
     @media (max-width:992px) {
@@ -349,7 +350,7 @@
   </div>
 
   <div class="w3-sidebar w3-bar-block w3-collapse" style="width:18%;right:0;padding-top:25px; background-color: #FFF;">
-    <h4 class="w3-bar-item">Highlights from our database: If these companies don't match your values, change your
+    <h4 class="w3-bar-item">Highlights from our data: If these companies don't match your values, change your
       spending habits.
     </h4>
     <div class="w3-bar-item w3-button" style="margin-top:2px; margin-bottom:12px" onclick="refeshRandomFill()"><i
@@ -398,7 +399,7 @@
       function openOverlayGrid() {
         shuffle(highlights)
         overlaydiv = document.getElementById("overlay")
-        tempih = '<div class="w3-grid-container"><div class="closex"><i class="fa fa-window-close"></i></div><div class="gridheader"><span style="background-color:#74b69d; padding: 4px;">Highlights from our database: If these companies don\'t match your values, change your spending habits.</span></div>'
+        tempih = '<div class="w3-grid-container"><div class="closex"><i class="fa fa-window-close"></i></div><div class="gridheader"><span style="background-color:#74b69d; padding: 4px;">March 2025 highlights from our data: If these companies don\'t match your values, change your spending habits.</span></div>'
         let currentIndex = highlights.length;
         while (currentIndex != 0) {
           currentIndex--;
@@ -406,7 +407,7 @@
           tempih += highlights[currentIndex]
           tempih += '</div>'
         }
-        tempih += '<div class="disclaimer-overlay">Suggestions are author opinions protected under the right to free speech. You are encouraged to do your own research and make use of the data and sources provided.</span>'
+        tempih += '<div class="disclaimer-overlay">Notice: Summaries, rankings, and highlights are author opinions protected under the right to free speech. You are encouraged to do your own research and make use of the data and sources provided.</span>'
         tempih += '</div">'
         overlaydiv.innerHTML = tempih
         overlaydiv.style.display = "block"
@@ -482,7 +483,7 @@
   <footer class="w3-container w3-dark-grey w3-padding-8" style="max-width:1600px; min-width:450px;">
     <div class="disclaimer"
       style="text-align:left; font-size:12px; margin-bottom:24px; margin-left:4%; margin-right:24%; color:#ccc">
-      <i>Notice: Summaries, rankings, and suggestions are author opinions protected under the right to free speech. You
+      <i>Notice: Summaries, rankings, and highlights are author opinions protected under the right to free speech. You
         are encouraged to do your own research and make use of the data and sources provided.</i>
     </div>
     <div id="footerhow" class="w3-footer">
