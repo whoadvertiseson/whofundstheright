@@ -8,4 +8,4 @@ This repository contains two elements related to the Who Funds the Right project
 * **Website**: A simple static HTML and CSS website to frame data contained in several Airtables. It is enabled and hosted by GitHub Pages in a dedicated branch.
 * **Python Scripts**: As more advanced features are developed, data processing Python scripts will also be included here.
 
-*Notice: Summaries, rankings, analyses, and selections throughout the project represent author ideas and opinions and are protected under the right to free speech*
+*Notice: Summaries, rankings, and highlights are author opinions protected under the right to free speech. You are encouraged to do your own research and make use of the data and sources provided.*
