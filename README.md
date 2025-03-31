@@ -1,7 +1,7 @@
 # whofundstheright
 
 ## About the project
-The **Who Funds the Right** project aims to to bring together data across different domains to better understand which American companies support the right wing in America, and contributed to or are supporting Trumpism. Its primary output is a [website available at whofundstheright.org](https://whofundstheright.org/)
+The **Who Funds the Right** project aims to to bring together data across different domains to better understand which American companies support the right wing in America, and contributed to or are supporting Trumpism, with the goal of enabling consumers to make more informed decisions. Its primary output is a [website available at whofundstheright.org](https://whofundstheright.org/)
 
 ## About the repository
 This repository contains two elements related to the Who Funds the Right project
