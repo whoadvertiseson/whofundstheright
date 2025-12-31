@@ -4,16 +4,16 @@
 <head>
   <title>Who Funds the Right</title>
   <meta charset="UTF-8">
-  <meta property="og:title" content="Who Funds the Right: Video Streaming Guide" />
+  <meta property="og:title" content="Who Funds the Right" />
   <meta property="og:description"
     content="Your data source for information on which American companies donated to the right, sponsor right wing news, rolled back diversity, and have right wing ownership." />
-  <meta property="og:image" content="https://whofundstheright.org/images/ogimage_str.png" />
+  <meta property="og:image" content="https://whofundstheright.org/images/ogimage.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/w3.css">
-  <link rel="stylesheet" href="../css/oswald.css">
-  <link rel="stylesheet" href="../css/opensans.css">
-  <link rel="stylesheet" href="../css/font-awesome.min.css">
-  <link rel="shortcut icon" href="../images/favicon.png">
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/oswald.css">
+  <link rel="stylesheet" href="css/opensans.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="shortcut icon" href="images/favicon.png">
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v22.0"></script>
@@ -105,7 +105,9 @@
       border-bottom: 6px solid #000 !important;
     }
 
-    .w3-content {}
+    .w3-content {
+      margin-right: 18%
+    }
 
     .w3-container-data {
       padding-left: 25px;
@@ -153,27 +155,22 @@
       border-radius: 8px 8px 0 0;
     }
 
-    .desctext {
-      padding: 2px 220px;
-    }
-
     @media (max-width:600px) {
       h1 {
-        font-size: 36px;
+        font-size: 33px;
       }
 
       h2 {
-        font-size: 24px;
+        font-size: 20px;
       }
 
       h3 {
-        font-size: 18px;
+        font-size: 16px;
       }
 
       .source {
         font-size: 13px;
       }
-
     }
 
     .w3-bar-item {
@@ -266,10 +263,6 @@
       .w3-footer {
         margin-right: 12%;
       }
-
-      .desctext {
-        padding: 2px 50px 2px 25px;
-      }
     }
 
     @media (max-width:1150px) {
@@ -347,195 +340,142 @@
   <!-- Navigation bar with social media icons -->
   <div class="w3-bar w3-black w3-hide-small">
     <a href="https://bsky.app/profile/whofundstheright.bsky.social" class="w3-bar-item w3-button"><img
-        src="../images/bsky-icon.png" height="22"></a>
-    <a href="https://www.threads.net/@whoadvertiseson" class="w3-bar-item w3-button"><img
-        src="../images/threads-icon.png" height="22"></a>
-    <a href="https://whofundstheright.org" class="w3-bar-item w3-button w3-right">
-      << Homepage</a>
-        <div class="fb-share-button" data-href="https://whofundstheright.org" data-layout="" data-size=""><a
-            target="_blank"
-            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwhofundstheright.org%2F&amp;src=sdkpreparse"
-            class="fb-xfbml-parse-ignore"></a></div>
+        src="images/bsky-icon.png" height="22"></a>
+    <a href="https://www.threads.net/@whoadvertiseson" class="w3-bar-item w3-button"><img src="images/threads-icon.png"
+        height="22"></a>
+    <a href="#usethisdata" class="w3-bar-item w3-button w3-right" onclick="highlightHow()">Use this data</a>
+    <div class="fb-share-button" data-href="https://whofundstheright.org" data-layout="" data-size=""><a target="_blank"
+        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwhofundstheright.org%2F&amp;src=sdkpreparse"
+        class="fb-xfbml-parse-ignore"></a></div>
+  </div>
+
+  <div class="w3-sidebar w3-bar-block w3-collapse" style="width:18%;right:0;padding-top:25px; background-color: #FFF;">
+    <h4 class="w3-bar-item">Highlights from the data: If companies don't match your values, let them know or
+      change habits.
+    </h4>
+    <div class="w3-bar-item w3-button" style="margin-top:2px; margin-bottom:12px" onclick="refeshRandomFill()"><i
+        class="fa fa-refresh"></i></div>
+    <div id="randomfill"></div>
+    <div class="w3-bar-item w3-button" style="margin-top:12px; margin-bottom:12px" onclick="openOverlayGrid()">See all
+      current highlights >></div>
+    <script type="application/javascript">
+      highlights = []
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_tesla.png" alt="Tesla" height="55"></div><div class="w3-bar-label">Right-biased ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_x.png" alt="X" height="35"></div><div class="w3-bar-label">Right-biased ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_valero.png" alt="Valero" height="45"></div><div class="w3-bar-label">Right-biased PAC</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_hd.png" alt="Home Depot" height="45"></div><div class="w3-bar-label">Right-biased PAC</div><div class="w3-bar-label">Rolled back diversity</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_walmart.png" alt="Walmart" height="30"></div><div class="w3-bar-label">Right-biased ownership</div><div class="w3-bar-label">Right-biased PAC</div><div class="w3-bar-label">Rolled back diversity</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_qunol.png" alt="Qunol" height="45"></div><div class="w3-bar-label">Right wing news sponsor</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_lm.png" alt="Liberty Mutual" height="30"></div><div class="w3-bar-label">Right wing news sponsor</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_az.png" alt="Amazon" height="35"></div><div class="w3-bar-label">Right-biased ownership</div><div class="w3-bar-label">Rolled back diversity</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_tsc.png" alt="Tractor Supply Co." height="35"></div><div class="w3-bar-label">Right-biased PAC</div><div class="w3-bar-label">Rolled back diversity</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_fox.png" alt="Fox Corp" height="30"></div><div class="w3-bar-label">Right-biased ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_uline.png" alt="Uline" height="30"></div><div class="w3-bar-label">Right-biased ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_meta.png" alt="Meta" height="40"></div><div class="w3-bar-label">Rolled back diversity</div><div class="w3-bar-label">Right-biased ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_bon.png" alt="Balance of Nature" height="20"></div><div class="w3-bar-label">Right wing news sponsor</div><div class="w3-bar-label">Right-biased ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_marathon.png" alt="Marathon" height="40"></div><div class="w3-bar-label">Right-biased PAC</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_ATT.png" alt="AT&T" height="40"></div><div class="w3-bar-label">Right-biased PAC</div><div class="w3-bar-label">Right wing news sponsor</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_forcefactor.png" alt="Force Factor" height="35"></div><div class="w3-bar-label">Right wing news sponsor</div>')
+      //highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/haleon.png" alt="Haleon" height="45"></div><div class="w3-bar-label">Right wing news sponsor</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_tmobilestarlink.png" alt="T-Mobile + Starlink" height="18"></div><div class="w3-bar-label">Right-biased ownership</div>')
+      highlights.push('<div class="w3-bar-item w3-bar-subitem"><img src="images/logo_ufc.png" alt="UFC" height="30"></div><div class="w3-bar-label">Right-biased ownership</div>')
+      function shuffle(array) {
+        let currentIndex = array.length;
+        while (currentIndex != 0) {
+          let randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+      }
+
+      function refeshRandomFill() {
+        shuffle(highlights)
+        filldiv = document.getElementById("randomfill")
+        dashline = '<div class="w3-dashline"></div>'
+        filldiv.innerHTML = dashline + highlights[0] + dashline + highlights[1] + dashline + highlights[2] + dashline + highlights[3] + dashline + highlights[4] + dashline
+      }
+
+      function openOverlayGrid() {
+        shuffle(highlights)
+        overlaydiv = document.getElementById("overlay")
+        tempih = '<div class="w3-grid-container"><div class="closex"><i class="fa fa-window-close"></i></div><div class="gridheader"><span style="background-color:#74b69d; padding: 4px;">Latest highlights: If companies don\'t match your values, let them know or change habits</span></div>'
+        let currentIndex = highlights.length;
+        while (currentIndex != 0) {
+          currentIndex--;
+          tempih += '<div class="w3-grid-item">'
+          tempih += highlights[currentIndex]
+          tempih += '</div>'
+        }
+        tempih += '<div class="disclaimer-overlay">Notice: Summaries, rankings, and highlights are author opinions based on the provided tabular data and the sources cited therein. You are encouraged to make use of these data and sources in addition to your own research.</span>'
+        tempih += '</div">'
+        overlaydiv.innerHTML = tempih
+        overlaydiv.style.display = "block"
+      }
+
+      function closeOverlayGrid() {
+        overlaydiv = document.getElementById("overlay")
+        overlaydiv.style.display = "none"
+      }
+
+      refeshRandomFill()
+    </script>
   </div>
 
   <div class="w3-content" style="max-width:1600px; min-width:450px;">
 
     <!-- Header -->
     <header class=" w3-container w3-center w3-padding-8 w3-white">
-      <h1><img src="../images/sheet.png" width="44" alt="Spreadsheet Icon">WHO FUNDS THE RIGHT
+      <h1><img src="images/sheet.png" width="44" alt="Spreadsheet Icon">WHO FUNDS THE RIGHT
       </h1>
     </header>
 
     <!-- Header --> <!---#94a2af--->
     <header id="topcategories">
-      <div class="w3-container w3-center" style="max-width:1600px; min-width:450px; background-color:#a67c00">
-        <h3 style="color:#EFEFEF; font-weight:normal; font-size:32px;">2026 Video Streaming Guide</h3>
-      </div>
-      <div class="desctext" style="font-style:normal; font-weight:normal; font-size:13px; background-color:#C0C0C0">
-        <span style="font-size:17px; font-weight:bold">Save money, resist fascism. Make a plan
-          now.</span><br />American households
-        average over $500 per
-        year for streaming services <a href="https://www.forbes.com/home-improvement/internet/streaming-stats/"
-          style="vertical-align: super; font-size:8px">1</a>. Yet how much of that goes to companies that
-        aid the
-        rise of fascism in
-        the US? Our guide is here to
-        help you make informed choices in the new year.
+      <div class="w3-container w3-center" style="max-width:1600px; min-width:450px; background-color:#74b69d">
+        <h3>Your data source for information on which American companies&hellip;</h3>
+        <div class="w3-section w3-bottombar w3-padding-4" style="padding:0px!important; margin-bottom:0px!important;">
+          <button id="PACbut" class="tabbut w3-button w3-white w3-black bignav" onclick="openTab(event, 'PAC',0)"><span
+              style="vertical-align: top">Donated to the right</span></button>
+          <button id="NEWSbut" class="tabbut w3-button w3-white bignav" onclick="openTab(event, 'NEWS',1)"><span
+              style="vertical-align: top">Sponsor right wing
+              news</span></button>
+          <button id="DEIbut" class="tabbut w3-button w3-white bignav" onclick="openTab(event, 'DEI',3)"><span
+              style="vertical-align: top">Rolled back
+              diversity</span></button>
+          <button id="OWNbut" class="tabbut w3-button w3-white bignav" onclick="openTab(event, 'OWN',2)"><span
+              style="vertical-align: top">Have right wing
+              owners</span></button>
+        </div>
       </div>
     </header>
 
     <!-- PAC Content--->
-    <div class="w3-container w3-container-data" style="background-color:#333">
-      <div class="w3-container w3-container-data" style="max-width:1600px; min-width:450px;">
-        <div id="subsection_title" style="text-align:center;">
-          <h2 style="text-align:left; color:#eee; margin-top:4px">Our recommendations</h2>
-        </div>
-      </div>
-      <!-- PAC Content--->
-      <div class="w3-container w3-container-data" style="max-width:1600px; min-width:450px; padding-left:10px;">
-        <div
-          style="float:left; width:31%; min-width:365px; min-height:290px; border:10px #1f9625 solid; border-radius: 10px; margin-bottom:4px; margin-left:10px; margin-bottom:12px; background-color: #EEE;">
-          <div
-            style="padding:1px 8px 4px 8px; background-color:#cff5d1; font-weight:bold; min-width:280px; font-size:17px">
-            STREAM THESE SERVICES FREELY</div>
-          <br />
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px;">
-            <image src="../images/logo_allblk.png" height=30 alt="allblk">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_amcplus.png" height=30 alt="AMC+">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: right;">
-            <image src="../images/logo_britbox.png" height=20 alt="BritBox">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: left ">
-            <image src="../images/logo_crunchyroll.png" height=15 alt="Crunchyroll">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_curiositystream.png" height=30 alt="Curiosity Stream">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: right;">
-            <image src="../images/logo_discoveryplus.png" height=20 alt="Discovery Plus">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: left;">
-            <image src="../images/logo_filmrise.png" height=30 alt="Film Rise">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_hbomax.png" height=35 alt="HBOMax">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: right;">
-            <image src="../images/logo_nebula.png" height=15 alt="Nebula">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: left;">
-            <image src="../images/logo_netflix.png" height=25 alt="Netflix">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_shudder.png" height=15 alt="Shudder">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: right;">
-            <image src="../images/logo_starz.png" height=20 alt="Starz">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: left;">
-            <image src="../images/logo_sundancenow.png" height=17 alt="Sundance Now">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_slingtv.png" height=35 alt="YouTube TV"></image>
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_criterionchannel.png" height=30 alt="The Criterion Collection">
-          </div>
-        </div>
-        <div
-          style="float:left; width:31%; min-width:365px; min-height:290px; border:10px #af7c00 solid; border-radius: 10px; margin-bottom:4px; margin-left:10px; margin-bottom:12px; background-color: #EEE;">
-          <div
-            style="padding:1px 8px 4px 8px; background-color:#ffeab6; font-weight:bold; min-width:310px; font-size:17px">
-            LIMIT THESE TO 1 OR 2 SUBS AT
-            A
-            TIME</div>
-          <br />
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_amazonprimevideo.png" height=25 alt="Amazon Prime Video">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_angelstudios.png" height=20 alt=Angel Studios">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: right">
-            <image src="../images/logo_appletv.png" height=30 alt="Apple TV">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: left">
-            <image src="../images/logo_betplus.png" height=20 alt="BET Plus">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_disneyplus.png" height=30 alt="Disney Plus">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: right">
-            <image src="../images/logo_fubotv.png" height=30 alt="Fubo TV">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: left">
-            <image src="../images/logo_hulu.png" height=25 alt="Hulu">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_mgmplus.png" height=30 alt="MGM Plus">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: right">
-            <image src="../images/logo_peacock.png" height=30 alt="Peacock">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: left">
-            <image src="../images/logo_philo.png" height=30 alt="Philo">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_rokuchannel.png" height=15 alt="Roku Channel">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: right">
-            <image src="../images/logo_xumo.png" height=15 alt="Xumo">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px; clear: left">
-            <image src="../images/logo_youtubepremium.png" height=20 alt="YouTube Premium">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-          </div>
-          <div style="width:30%; margin-bottom: 12px; float:left; padding-left:12px">
-            <image src="../images/logo_youtubetv.png" height=20 alt="YouTube TV">
-          </div>
-        </div>
-        <div
-          style="float:left; width:31%; min-width:365px; min-height:290px; border:10px #bb0034 solid; border-radius: 10px; margin-bottom:4px; margin-left:10px; margin-bottom:16px; background-color: #EEE;">
-          <div
-            style="padding:1px 8px 4px 8px; background-color:#ffd4e0; font-weight:bold; min-width:280px; font-size:17px">
-            AVOID
-            THESE ALTOGETHER</div>
-          <br />
-          <div style="width:45%; margin-left: 10px; margin-bottom: 26px; float:left; padding-left:14px">
-            <image src="../images/logo_foxone.png" height=20 alt="Fox One">
-          </div>
-          <div style="width:45%; margin-left: 10px; margin-bottom: 26px; float:left; padding-left:14px; clear: right">
-            <image src="../images/logo_foxnation.png" height=40 alt="Fox Nation">
-          </div>
-          <div style="width:45%; margin-left: 10px; margin-bottom: 46px; float:left; padding-left:14px; clear: left">
-            <image src="../images/logo_paramountplus.png" height=50 alt="Paramount Plus">
-          </div>
-          <div style="width:45%; margin-left: 10px; margin-bottom: 46px; float:left; padding-left:14px; clear: right">
-            <image src="../images/logo_plutotv.png" height=48 alt="Pluto TV">
-          </div>
-          <div style="width:45%; margin-left: 10px; margin-bottom: 18px; float:left; padding-left:14px; clear: left">
-            <image src="../images/logo_tubi.png" height=30 alt="Tubi">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PAC Content--->
     <div class="w3-container w3-container-data" style="max-width:1600px; min-width:450px; background-color:#EEE">
-      <div id="subsection_title" style="text-align:center; margin-bottom:8px">
-        <h2 style="text-align:left;">Explore the evidence and make up your own mind</h2>
+      <div id="subsection_title" style="text-align:center;">
+        <h2>Corporate PACs Ranked by Right-Biased Giving</h2><span class="source">Source: Calculated from <a
+            href="https://www.opensecrets.org/">OpenSecrets</a> 2024 cycle PAC data</span>
       </div>
       <div class="w3-row-padding">
         <div id="PAC" class="tabcontent"><iframe class="airtable-embed"
-            src="https://airtable.com/embed/app2FIwo8rAcFarf6/shronIVJR7TTU9hnU" frameborder="0" onmousewheel=""
+            src="https://airtable.com/embed/appk5vYnSo2I0qfu0/shrhKauFkBh0UUfsi" frameborder="0" onmousewheel=""
+            width="100%" height="440" style="background: transparent; border: 0px solid #ccc;"></iframe>
+        </div>
+        <div id="NEWS" class="tabcontent hidden"><iframe class="airtable-embed"
+            src="https://airtable.com/embed/appE5LiJA7eTpyMxC/shrcvsWMkvJaiiTAy" frameborder="0" onmousewheel=""
+            width="100%" height="440" style="background: transparent; border: 0px solid #ccc;"></iframe>
+        </div>
+        <div id="DEI" class="tabcontent hidden"><iframe class="airtable-embed"
+            src="https://airtable.com/embed/app2FIwo8rAcFarf6/shro9s4LjT4XRrQBV" frameborder="0" onmousewheel=""
+            width="100%" height="440" style="background: transparent; border: 0px solid #ccc;"></iframe>
+        </div>
+        <div id="OWN" class="tabcontent hidden"><iframe class="airtable-embed"
+            src="https://airtable.com/embed/app2FIwo8rAcFarf6/shrgsnVolEs1m3aD4" frameborder="0" onmousewheel=""
             width="100%" height="440" style="background: transparent; border: 0px solid #ccc;"></iframe>
         </div>
       </div>
     </div>
+
     <!-- END w3-content -->
   </div>
 
@@ -548,6 +488,18 @@
         research.</i>
     </div>
     <div id="footerhow" class="w3-footer">
+      <p>
+        <a name="usethisdata"></a>
+      <h5>How to use this data</h5>
+      <ul>
+        <li>Make a plan that fits your life. Pick one company not matching your values that you currently use. Ask them
+          to stop, or just change your habit to shop somewhere else.</li>
+        <li>Make your own social media campaigns on TikTok, Instagram, Facebook, or elsewhere.</li>
+        <li>Journalists, researchers, and organizations: use this (and us) as a resource.</li>
+        <li>Any questions, comments, or suggestions, please email <a href="mailto:whofundstheright@proton.me"
+            target="_blank">whofundstheright@proton.me</a>.</li>
+      </ul>
+      </p>
     </div>
   </footer>
 
