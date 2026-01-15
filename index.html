@@ -150,9 +150,13 @@
     }
 
     .tabbut {
-      width: 224px;
+      width: 164px;
+      height: 54px;
       margin-bottom: 0;
       border-radius: 8px 8px 0 0;
+      white-space: normal !important;
+      padding: 0px 16px !important;
+      line-height: 20px;
     }
 
     @media (max-width:600px) {
@@ -269,7 +273,7 @@
       .tabbut {
         margin-bottom: 3px;
         font-size: 15px;
-        width: 204px;
+        width: 134px;
         border-radius: 0;
       }
 
@@ -293,11 +297,12 @@
     tabSubLabels = ['Corporate PACs Ranked by Right-Biased Giving',
       'Fox News Channel Sponsors Ranked by Ad Frequency',
       'Companies with Prominent Right Biased Ownership/Management',
-      'Companies that Rolled Back Diversity Programs']
+      'Companies that Rolled Back Diversity Programs', 'Companies that Contract With or Support ICE']
     tabSubSources = ['Source: Calculated from <a href="https://www.opensecrets.org/"">OpenSecrets</a> 2024 cycle PAC data',
       'Source: <a href="http://whoadvertiseson.org/"">WhoAdvertisesOn</a> project ',
       'Sources: Various cited news articles ',
-      'Sources: Various cited news articles']
+      'Sources: Various cited news articles',
+      'Sources: Various cited news articles and records']
 
 
     function openTab(evt, tabName, subIndex) {
@@ -348,7 +353,8 @@
       Guide</button>
     <button class="w3-bar-item w3-button w3-right w3-green"
       onclick="document.location.href = 'index.html'">Homepage</button>
-    <div class="fb-share-button w3-left" data-href="https://whofundstheright.org" data-layout="" data-size=""><a target="_blank"
+    <div class="fb-share-button w3-left" data-href="https://whofundstheright.org" data-layout="" data-size=""><a
+        target="_blank"
         href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwhofundstheright.org%2F&amp;src=sdkpreparse"
         class="fb-xfbml-parse-ignore"></a></div>
   </div>
@@ -441,7 +447,7 @@
         <h3>Your data source for information on which American companies&hellip;</h3>
         <div class="w3-section w3-bottombar w3-padding-4" style="padding:0px!important; margin-bottom:0px!important;">
           <button id="PACbut" class="tabbut w3-button w3-white w3-black bignav" onclick="openTab(event, 'PAC',0)"><span
-              style="vertical-align: top">Donated to the right</span></button>
+              style="vertical-align: top">Donated to </br>the right</span></button>
           <button id="NEWSbut" class="tabbut w3-button w3-white bignav" onclick="openTab(event, 'NEWS',1)"><span
               style="vertical-align: top">Sponsor right wing
               news</span></button>
@@ -449,8 +455,10 @@
               style="vertical-align: top">Rolled back
               diversity</span></button>
           <button id="OWNbut" class="tabbut w3-button w3-white bignav" onclick="openTab(event, 'OWN',2)"><span
-              style="vertical-align: top">Have right wing
+              style="vertical-align: top">Have right </br>wing
               owners</span></button>
+          <button id="COLbut" class="tabbut w3-button w3-white bignav" onclick="openTab(event, 'COL',4)"><span
+              style="vertical-align: top">Collaborate</br> with ICE</span></button>
         </div>
       </div>
     </header>
@@ -476,6 +484,10 @@
         </div>
         <div id="OWN" class="tabcontent hidden"><iframe class="airtable-embed"
             src="https://airtable.com/embed/app2FIwo8rAcFarf6/shrgsnVolEs1m3aD4" frameborder="0" onmousewheel=""
+            width="100%" height="440" style="background: transparent; border: 0px solid #ccc;"></iframe>
+        </div>
+        <div id="COL" class="tabcontent hidden"><iframe class="airtable-embed"
+            src="https://airtable.com/embed/app2FIwo8rAcFarf6/shrT6v9PNQ8U1UTxl" frameborder="0" onmousewheel=""
             width="100%" height="440" style="background: transparent; border: 0px solid #ccc;"></iframe>
         </div>
       </div>
